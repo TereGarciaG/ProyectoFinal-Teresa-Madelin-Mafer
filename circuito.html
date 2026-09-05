@@ -28,6 +28,52 @@
             min-height: 100vh;
         }
 
+        /* =========================
+           BARRA SUPERIOR
+        ========================= */
+
+        .navbar {
+            width: 100%;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(156,135,232,.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 900;
+            font-size: 1.25rem;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 800;
+            font-size: .92rem;
+            transition: .25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink);
+            transform: translateY(-2px);
+        }
+
         .top {
             width: min(1050px, calc(100% - 28px));
             margin: 25px auto;
@@ -134,47 +180,165 @@
 
         footer span { color: #ffb8da; }
 
+        @media(max-width:750px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+        }
+
         @media(max-width:650px) {
             .pins { grid-template-columns: 1fr; }
             .panel { padding: 20px; }
         }
     </style>
 </head>
+
 <body>
 
+<!-- =========================
+     BARRA DE NAVEGACIÓN
+========================= -->
+
+<nav class="navbar">
+
+    <a class="brand" href="safezone_actualizada.html">
+        🎢 SAFEZONE
+    </a>
+
+    <div class="nav-links">
+
+        <a href="safezone_actualizada.html">
+            Inicio
+        </a>
+
+        <a href="investigacion.html">
+            Investigación
+        </a>
+
+        <a href="circuito.html">
+            Circuito
+        </a>
+
+        <a href="infografia.html">
+            Infografía
+        </a>
+
+        <a href="podcast.html">
+            Podcast
+        </a>
+
+    </div>
+
+</nav>
+
+
 <div class="top">
-    <a class="back" href="index.html">← Volver a SAFEZONE</a>
+
+    <a class="back" href="safezone_actualizada.html">
+        ← Volver a SAFEZONE
+    </a>
+
 </div>
 
+
 <header>
-    <div class="tag">05 · Área técnica</div>
-    <h1>TECH <span>LAB</span> ⚙️</h1>
+
+    <div class="tag">
+        05 · Área técnica
+    </div>
+
+    <h1>
+        TECH <span>LAB</span> ⚙️
+    </h1>
+
     <p>
         Aquí se encuentra la configuración técnica del circuito de SAFEZONE:
         pines, variables y programación inicial del sistema.
     </p>
+
 </header>
 
+
 <main>
-    <section class="panel">
-        <h2>🔌 Distribución de pines</h2>
-        <div class="pins">
-            <div class="pin"><span>LED rojo</span><code>3</code></div>
-            <div class="pin"><span>LED amarillo</span><code>5</code></div>
-            <div class="pin"><span>LED verde</span><code>6</code></div>
-            <div class="pin"><span>Trig</span><code>A2</code></div>
-            <div class="pin"><span>Echo</span><code>A1</code></div>
-            <div class="pin"><span>PIR</span><code>A0</code></div>
-            <div class="pin"><span>SDA</span><code>A5</code></div>
-            <div class="pin"><span>SCL</span><code>A4</code></div>
-            <div class="pin"><span>Push Button</span><code>A3</code></div>
-            <div class="pin"><span>Buzzer</span><code>12</code></div>
-        </div>
-    </section>
 
     <section class="panel">
-        <h2>💻 Configuración inicial</h2>
+
+        <h2>
+            🔌 Distribución de pines
+        </h2>
+
+        <div class="pins">
+
+            <div class="pin">
+                <span>LED rojo</span>
+                <code>3</code>
+            </div>
+
+            <div class="pin">
+                <span>LED amarillo</span>
+                <code>5</code>
+            </div>
+
+            <div class="pin">
+                <span>LED verde</span>
+                <code>6</code>
+            </div>
+
+            <div class="pin">
+                <span>Trig</span>
+                <code>A2</code>
+            </div>
+
+            <div class="pin">
+                <span>Echo</span>
+                <code>A1</code>
+            </div>
+
+            <div class="pin">
+                <span>PIR</span>
+                <code>A0</code>
+            </div>
+
+            <div class="pin">
+                <span>SDA</span>
+                <code>A5</code>
+            </div>
+
+            <div class="pin">
+                <span>SCL</span>
+                <code>A4</code>
+            </div>
+
+            <div class="pin">
+                <span>Push Button</span>
+                <code>A3</code>
+            </div>
+
+            <div class="pin">
+                <span>Buzzer</span>
+                <code>12</code>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="panel">
+
+        <h2>
+            💻 Configuración inicial
+        </h2>
+
         <div class="code">
+
 <pre>// DEFINICIÓN DE PINES
 
 #define LEDr 3
@@ -196,22 +360,37 @@
 int T = 0;
 int Dist = 0;
 int DetecM = 0;</pre>
+
         </div>
+
     </section>
 
+
     <section class="panel">
-        <h2>🧠 ¿Qué representa?</h2>
+
+        <h2>
+            🧠 ¿Qué representa?
+        </h2>
+
         <div class="note">
+
             <strong>SAFEZONE</strong> integra sensores de distancia y movimiento
             con señales visuales, sonoras y una pantalla LCD para comunicar el
             estado del sistema al operador.
+
         </div>
+
     </section>
+
 </main>
 
+
 <footer>
+
     🎢 <strong>SAFE<span>ZONE</span></strong> · TECH LAB · 2026
+
 </footer>
+
 
 </body>
 </html>
