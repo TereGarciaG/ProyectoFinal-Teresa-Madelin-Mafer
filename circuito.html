@@ -1,1 +1,217 @@
-circuito.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH LAB | SAFEZONE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+        :root {
+            --pink: #e96ba9;
+            --lavender: #9c87e8;
+            --ink: #302b3d;
+            --muted: #756d82;
+            --shadow: 0 18px 45px rgba(91,63,110,.13);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Nunito", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 8% 8%, rgba(255,143,199,.25), transparent 24%),
+                radial-gradient(circle at 92% 15%, rgba(142,216,255,.25), transparent 24%),
+                linear-gradient(135deg,#fff8fc,#f5f1ff 55%,#effaff);
+            min-height: 100vh;
+        }
+
+        .top {
+            width: min(1050px, calc(100% - 28px));
+            margin: 25px auto;
+        }
+
+        .back {
+            display: inline-flex;
+            text-decoration: none;
+            color: var(--pink);
+            font-weight: 900;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(91,63,110,.08);
+        }
+
+        header {
+            width: min(1050px, calc(100% - 28px));
+            margin: 55px auto 40px;
+            text-align: center;
+        }
+
+        .tag {
+            color: var(--pink);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: .82rem;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            margin: 8px 0;
+            letter-spacing: -3px;
+        }
+
+        h1 span { color: var(--pink); }
+
+        header p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        main {
+            width: min(1050px, calc(100% - 28px));
+            margin: auto;
+        }
+
+        .panel {
+            background: rgba(255,255,255,.86);
+            border: 1px solid white;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .panel h2 { margin-top: 0; }
+
+        .pins {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 12px;
+        }
+
+        .pin {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 14px 17px;
+            background: #faf7fc;
+            border-radius: 16px;
+        }
+
+        .pin span { color: var(--muted); }
+        .pin code { color: var(--pink); font-weight: 900; }
+
+        .code {
+            background: #272431;
+            color: #f7d9e9;
+            border-radius: 22px;
+            padding: 22px;
+            overflow-x: auto;
+            line-height: 1.6;
+            font-family: Consolas, monospace;
+        }
+
+        .note {
+            background: linear-gradient(135deg,#fff0f8,#f0edff);
+            border-radius: 22px;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px;
+            text-align: center;
+            background: #302b3d;
+            color: white;
+        }
+
+        footer span { color: #ffb8da; }
+
+        @media(max-width:650px) {
+            .pins { grid-template-columns: 1fr; }
+            .panel { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <a class="back" href="safezone.html">← Volver a SAFEZONE</a>
+</div>
+
+<header>
+    <div class="tag">05 · Área técnica</div>
+    <h1>TECH <span>LAB</span> ⚙️</h1>
+    <p>
+        Aquí se encuentra la configuración técnica del circuito de SAFEZONE:
+        pines, variables y programación inicial del sistema.
+    </p>
+</header>
+
+<main>
+    <section class="panel">
+        <h2>🔌 Distribución de pines</h2>
+        <div class="pins">
+            <div class="pin"><span>LED rojo</span><code>3</code></div>
+            <div class="pin"><span>LED amarillo</span><code>5</code></div>
+            <div class="pin"><span>LED verde</span><code>6</code></div>
+            <div class="pin"><span>Trig</span><code>A2</code></div>
+            <div class="pin"><span>Echo</span><code>A1</code></div>
+            <div class="pin"><span>PIR</span><code>A0</code></div>
+            <div class="pin"><span>SDA</span><code>A5</code></div>
+            <div class="pin"><span>SCL</span><code>A4</code></div>
+            <div class="pin"><span>Push Button</span><code>A3</code></div>
+            <div class="pin"><span>Buzzer</span><code>12</code></div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>💻 Configuración inicial</h2>
+        <div class="code">
+<pre>// DEFINICIÓN DE PINES
+
+#define LEDr 3
+#define LEDa 5
+#define LEDV 6
+
+#define Trig A2
+#define Echo A1
+
+#define PIR A0
+
+#define SDA A5
+#define SCL A4
+
+#define Button A3
+#define Buzzer 12
+
+// VARIABLES
+int T = 0;
+int Dist = 0;
+int DetecM = 0;</pre>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>🧠 ¿Qué representa?</h2>
+        <div class="note">
+            <strong>SAFEZONE</strong> integra sensores de distancia y movimiento
+            con señales visuales, sonoras y una pantalla LCD para comunicar el
+            estado del sistema al operador.
+        </div>
+    </section>
+</main>
+
+<footer>
+    🎢 <strong>SAFE<span>ZONE</span></strong> · TECH LAB · 2026
+</footer>
+
+</body>
+</html>
