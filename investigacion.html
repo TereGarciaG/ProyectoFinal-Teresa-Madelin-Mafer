@@ -3,94 +3,709 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Investigación formal | SAFEZONE</title>
+
 <style>
 :root{
-  --pink:#ffb8da; --pink2:#ffdced; --lav:#d9ccff; --blue:#ccecff;
-  --ink:#302b3d; --white:#fffaff; --line:#eadff0;
+  --pink:#ffb8da;
+  --pink2:#ffdced;
+  --lav:#d9ccff;
+  --blue:#ccecff;
+  --ink:#302b3d;
+  --white:#fffaff;
+  --line:#eadff0;
+  --purple:#ad6f98;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#fffaff,#f8f3ff);color:var(--ink)}
-a{text-decoration:none;color:inherit}
-nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 6%;background:rgba(255,250,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.brand{font-weight:900;font-size:1.25rem}
-.links{display:flex;gap:18px;flex-wrap:wrap}.links a{font-weight:700;font-size:.92rem}
-main{max-width:1120px;margin:auto;padding:20px}
-.hero{padding:70px 0 45px;text-align:center}.tag{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--pink2);font-weight:800}
-h1{font-size:clamp(3rem,8vw,6rem);margin:18px 0 4px;letter-spacing:-4px}h1 span{color:#d18bb0}
-h2{font-size:clamp(1.7rem,4vw,3rem);margin:10px 0}h3{margin:8px 0}
-.hero p,.intro{max-width:760px;margin:18px auto;line-height:1.75;font-size:1.05rem}
-.cta{display:inline-block;margin:10px 6px;padding:13px 20px;border-radius:16px;background:var(--ink);color:white;font-weight:900;transition:.25s}
-.cta:hover{transform:translateY(-3px) scale(1.02)}
-.section{margin:60px 0}.section-title{text-align:center;margin-bottom:25px}.section-title span{font-weight:900;color:#ad6f98}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:25px;padding:25px;box-shadow:0 12px 35px rgba(70,45,80,.08)}
-.card p{line-height:1.7}.icon{font-size:2.2rem}
-.pill{display:inline-block;padding:7px 11px;border-radius:999px;background:var(--blue);font-weight:800;font-size:.82rem;margin:4px}
-.timeline{display:grid;gap:14px}.step{display:grid;grid-template-columns:70px 1fr;align-items:center}
-.number{width:54px;height:54px;border-radius:18px;background:var(--lav);display:grid;place-items:center;font-weight:900;font-size:1.2rem}
-footer{text-align:center;padding:35px;background:var(--ink);color:white;margin-top:70px}
-footer span{color:var(--pink)}
-@media(max-width:700px){nav{position:relative;flex-direction:column;gap:12px}.links{justify-content:center}.grid{grid-template-columns:1fr}.step{grid-template-columns:55px 1fr}}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(135deg,#fffaff,#f8f3ff);
+  color:var(--ink);
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:18px 6%;
+
+  background:rgba(255,250,255,.92);
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid var(--line);
+}
+
+.brand{
+  font-weight:900;
+  font-size:1.25rem;
+  color:var(--ink);
+}
+
+.links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.links a{
+  font-weight:700;
+  font-size:.92rem;
+  transition:.25s;
+}
+
+.links a:hover{
+  color:var(--purple);
+  transform:translateY(-2px);
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:20px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  padding:70px 0 45px;
+  text-align:center;
+}
+
+.tag{
+  display:inline-block;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  background:var(--pink2);
+
+  font-weight:800;
+}
+
+h1{
+  font-size:clamp(3rem,8vw,6rem);
+
+  margin:18px 0 4px;
+
+  letter-spacing:-4px;
+}
+
+h1 span{
+  color:#d18bb0;
+}
+
+h2{
+  font-size:clamp(1.7rem,4vw,3rem);
+  margin:10px 0;
+}
+
+h3{
+  margin:8px 0;
+}
+
+.hero p,
+.intro{
+  max-width:760px;
+
+  margin:18px auto;
+
+  line-height:1.75;
+
+  font-size:1.05rem;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.cta{
+  display:inline-block;
+
+  margin:10px 6px;
+
+  padding:13px 20px;
+
+  border-radius:16px;
+
+  background:var(--ink);
+
+  color:white;
+
+  font-weight:900;
+
+  transition:.25s;
+
+  border:none;
+
+  cursor:pointer;
+}
+
+.cta:hover{
+  transform:translateY(-3px) scale(1.02);
+
+  box-shadow:0 8px 20px rgba(48,43,61,.18);
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section{
+  margin:60px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.section-title span{
+  font-weight:900;
+  color:var(--purple);
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+.grid{
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:20px;
+}
+
+.card{
+  background:rgba(255,255,255,.86);
+
+  border:1px solid var(--line);
+
+  border-radius:25px;
+
+  padding:25px;
+
+  box-shadow:0 12px 35px rgba(70,45,80,.08);
+}
+
+.card p{
+  line-height:1.7;
+}
+
+.icon{
+  font-size:2.2rem;
+}
+
+/* =========================
+   ETIQUETAS
+========================= */
+
+.pill{
+  display:inline-block;
+
+  padding:7px 11px;
+
+  border-radius:999px;
+
+  background:var(--blue);
+
+  font-weight:800;
+
+  font-size:.82rem;
+
+  margin:4px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+  display:grid;
+  gap:14px;
+}
+
+.step{
+  display:grid;
+
+  grid-template-columns:70px 1fr;
+
+  align-items:center;
+}
+
+.number{
+  width:54px;
+  height:54px;
+
+  border-radius:18px;
+
+  background:var(--lav);
+
+  display:grid;
+
+  place-items:center;
+
+  font-weight:900;
+
+  font-size:1.2rem;
+}
+
+/* =========================
+   DOCUMENTO PDF
+========================= */
+
+.document-card{
+  text-align:center;
+
+  background:rgba(255,255,255,.9);
+
+  border:1px solid var(--line);
+
+  border-radius:28px;
+
+  padding:25px;
+
+  box-shadow:0 12px 35px rgba(70,45,80,.08);
+}
+
+.document-icon{
+  font-size:3.5rem;
+
+  margin-bottom:8px;
+}
+
+.pdf-container{
+  margin:25px auto;
+
+  max-width:950px;
+
+  border:2px solid var(--line);
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  background:white;
+
+  box-shadow:0 10px 30px rgba(70,45,80,.10);
+}
+
+.pdf-container iframe{
+  display:block;
+
+  width:100%;
+
+  height:700px;
+
+  border:none;
+
+  background:white;
+}
+
+/* =========================
+   AVISO PDF
+========================= */
+
+.notice{
+  max-width:800px;
+
+  margin:20px auto;
+
+  padding:15px 20px;
+
+  border-radius:18px;
+
+  background:var(--pink2);
+
+  line-height:1.6;
+
+  font-size:.92rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  text-align:center;
+
+  padding:35px;
+
+  background:var(--ink);
+
+  color:white;
+
+  margin-top:70px;
+}
+
+footer span{
+  color:var(--pink);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+  nav{
+    position:relative;
+
+    flex-direction:column;
+
+    gap:12px;
+  }
+
+  .links{
+    justify-content:center;
+
+    gap:12px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .step{
+    grid-template-columns:55px 1fr;
+  }
+
+  h1{
+    letter-spacing:-2px;
+  }
+
+  .pdf-container iframe{
+    height:550px;
+  }
+
+}
+
 </style>
 </head>
+
 <body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
 <nav>
-  <a class="brand" href="safezone_actualizada.html">🎢 SAFEZONE</a>
+
+  <a class="brand" href="safezone_actualizada.html">
+    🎢 SAFEZONE
+  </a>
+
   <div class="links">
-    <a href="safezone_actualizada.html">Inicio</a>
-    <a href="circuito.html">Circuito</a>
-    <a href="investigacion.html">Investigación</a>
-    <a href="infografia.html">Infografía</a>
-    <a href="podcast.html">Podcast</a>
+
+    <a href="safezone_actualizada.html">
+      Inicio
+    </a>
+
+    <a href="circuito.html">
+      Circuito
+    </a>
+
+    <a href="investigacion.html">
+      Investigación
+    </a>
+
+    <a href="infografia.html">
+      Infografía
+    </a>
+
+    <a href="podcast.html">
+      Podcast
+    </a>
+
   </div>
+
 </nav>
+
+
+<!-- =========================
+     CONTENIDO
+========================= -->
+
 <main>
+
+
+<!-- HERO -->
+
 <section class="hero">
-  <span class="tag">📚 INVESTIGACIÓN FORMAL · SAFEZONE</span>
-  <h1>Investigación <span>formal</span></h1>
-  <p class="intro">Sistema de Seguridad Automatizado para Zonas de Restricción en Juegos Mecánicos</p>
-  <a class="cta" href="#planteamiento">Leer investigación ↓</a>
+
+  <span class="tag">
+    📚 INVESTIGACIÓN FORMAL · SAFEZONE
+  </span>
+
+  <h1>
+    Investigación <span>formal</span>
+  </h1>
+
+  <p class="intro">
+    Sistema de Seguridad Automatizado para Zonas de Restricción en Juegos Mecánicos
+  </p>
+
+  <a class="cta" href="#planteamiento">
+    Leer investigación ↓
+  </a>
+
+  <a class="cta" href="#documento">
+    Ver documento 📄
+  </a>
+
 </section>
-<section class="section" id="documento">
+
+
+<!-- =========================
+     PLANTEAMIENTO
+========================= -->
+
+<section class="section" id="planteamiento">
+
   <div class="section-title">
-    <span>06 · Documento</span>
-    <h2>Investigación en Word 📄</h2>
-    <p>Consulta una vista previa del documento formal directamente desde esta página.</p>
+
+    <span>
+      01 · Problemática
+    </span>
+
+    <h2>
+      Planteamiento del problema
+    </h2>
+
   </div>
 
-  <div class="card" style="text-align:center">
-    <div class="icon" style="font-size:3rem">📄✨</div>
-    <h3>Vista previa del documento</h3>
-    <p>Coloca tu archivo de Word en la misma carpeta que esta página y así podrás mostrarlo dentro del sitio.</p>
 
-    <div style="margin:22px auto;max-width:900px;border:1px solid #eadff0;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(70,45,80,.08)">
-      <iframe
-        src="investigacion-word.docx"
-        width="100%"
-        height="650"
-        style="border:0;display:block"
-        title="Vista previa de la investigación en Word">
-      </iframe>
+  <div class="card">
+
+    <div class="icon">
+      ⚠️
     </div>
 
-    <p style="font-size:.9rem">
-      <span class="pill">Archivo: investigacion-word.docx</span>
+    <h3>
+      Una zona de restricción necesita seguridad
+    </h3>
+
+    <p>
+      En los juegos mecánicos existen zonas de restricción
+      en las que no debe ingresar ninguna persona mientras
+      el sistema se encuentra funcionando.
     </p>
-    <a class="cta" href="investigacion-word.docx" target="_blank">Abrir documento 📄</a>
+
+    <p>
+      El ingreso no autorizado puede representar un riesgo
+      para los operadores y visitantes. Por esta razón,
+      SAFEZONE propone utilizar tecnología para detectar
+      automáticamente la presencia o movimiento dentro
+      de una zona restringida.
+    </p>
+
   </div>
+
 </section>
 
+  <div class="card">
+
+    <div class="icon">
+      💗🎢
+    </div>
+
+    <p>
+      El proyecto integra conocimientos de programación,
+      electrónica y automatización para plantear una
+      solución tecnológica ante una situación de seguridad.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DOCUMENTO PDF
+========================= -->
+
+<section class="section" id="documento">
+
+  <div class="section-title">
+
+    <span>
+      06 · Documento
+    </span>
+
+    <h2>
+      Investigación en PDF 📄
+    </h2>
+
+    <p>
+      Consulta la investigación formal directamente
+      desde esta página.
+    </p>
+
+  </div>
+
+
+  <div class="document-card">
+
+    <div class="document-icon">
+      📄✨
+    </div>
+
+    <h3>
+      Vista previa de la investigación
+    </h3>
+
+    <p>
+      Aquí puedes visualizar el documento completo
+      sin salir de la página.
+    </p>
+
+
+    <!-- VISOR PDF -->
+
+    <div class="pdf-container">
+
+      <iframe
+        src="investigacion.pdf"
+        title="Vista previa de la investigación formal">
+      </iframe>
+
+    </div>
+
+
+    <div class="notice">
+
+      💗 <strong>Importante:</strong>
+      el archivo debe llamarse
+      <strong>investigacion.pdf</strong>
+      y encontrarse en la misma carpeta que
+      <strong>investigacion.html</strong>.
+
+    </div>
+
+
+    <span class="pill">
+      📄 investigacion.pdf
+    </span>
+
+
+    <br>
+
+
+    <a
+      class="cta"
+      href="investigacion.pdf"
+      target="_blank"
+      rel="noopener noreferrer">
+
+      Abrir investigación 📖
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     REFERENCIA TÉCNICA
+========================= -->
 
 <section class="section">
-  <div class="section-title"><span>06 · Fuente del proyecto</span><h2>Referencia técnica</h2></div>
-  <div class="card">
-    <p>La propuesta y los componentes descritos se basan en el borrador del Proyecto de TICS del equipo.</p>
-    <p><strong>Simulación:</strong> Tinkercad · circuito SAFEZONE</p>
-    <a class="cta" href="circuito.html">Ver área técnica ⚙️</a>
+
+  <div class="section-title">
+
+    <span>
+      07 · Fuente del proyecto
+    </span>
+
+    <h2>
+      Referencia técnica
+    </h2>
+
   </div>
+
+
+  <div class="card">
+
+    <div class="icon">
+      ⚙️
+    </div>
+
+    <p>
+      La propuesta y los componentes descritos se basan
+      en el proyecto de TICS del equipo.
+    </p>
+
+    <p>
+      <strong>
+        Simulación:
+      </strong>
+
+      Tinkercad · circuito SAFEZONE
+    </p>
+
+
+    <a
+      class="cta"
+      href="circuito.html">
+
+      Ver área técnica ⚙️
+
+    </a>
+
+  </div>
+
 </section>
+
+
 </main>
-<footer>SAFEZONE · Proyecto de TICS · 11B · <span>Seguridad inteligente 🎢</span></footer>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  SAFEZONE · Proyecto de TICS · 11B ·
+
+  <span>
+    Seguridad inteligente 🎢
+  </span>
+
+</footer>
+
+
 </body>
 </html>
