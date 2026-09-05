@@ -456,6 +456,204 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* RECURSOS + VENTANA DE CARGA */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .resource-card {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 16px;
+            align-items: center;
+            min-height: 205px;
+            padding: 25px;
+            background: rgba(255,255,255,.88);
+            border: 1px solid white;
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            transition: transform .22s ease, box-shadow .22s ease;
+        }
+
+        .resource-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.9) 50%, transparent 80%);
+            transform: translateX(-110%);
+            transition: transform .65s ease;
+            pointer-events: none;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-7px) scale(1.015);
+            box-shadow: 0 24px 50px rgba(91,63,110,.17);
+        }
+
+        .resource-card:hover::before {
+            transform: translateX(110%);
+        }
+
+        .resource-card:active {
+            transform: scale(.95);
+        }
+
+        .resource-icon {
+            width: 75px;
+            height: 75px;
+            display: grid;
+            place-items: center;
+            border-radius: 24px;
+            background: linear-gradient(135deg,#ffe0ef,#ded5ff);
+            font-size: 2.4rem;
+            transition: transform .25s ease;
+        }
+
+        .resource-card:hover .resource-icon {
+            transform: rotate(-6deg) scale(1.08);
+        }
+
+        .resource-tag {
+            color: var(--pink-dark);
+            font-size: .72rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+        }
+
+        .resource-card h3 {
+            margin: 4px 0 5px;
+            font-size: 1.35rem;
+        }
+
+        .resource-card p {
+            color: var(--muted);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .resource-card strong {
+            grid-column: 1 / -1;
+            color: #8b68b7;
+            font-size: .9rem;
+            justify-self: end;
+        }
+
+        /* Pantalla de carga con montaña rusa girando */
+        #loadingScreen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(48,43,61,.64);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+
+        #loadingScreen.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .loading-box {
+            width: min(430px, 88vw);
+            padding: 32px 25px 28px;
+            text-align: center;
+            border-radius: 32px;
+            background: linear-gradient(145deg,#fffaff,#f5efff);
+            border: 2px solid rgba(255,255,255,.95);
+            box-shadow: 0 30px 80px rgba(39,29,52,.32);
+            animation: loaderPop .35s ease;
+        }
+
+        @keyframes loaderPop {
+            from { opacity: 0; transform: scale(.86) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .loading-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--lavender);
+        }
+
+        .loading-logo span { color: var(--pink-dark); }
+
+        .coaster-loader {
+            position: relative;
+            height: 125px;
+            width: 310px;
+            max-width: 100%;
+            margin: 8px auto 5px;
+            overflow: hidden;
+        }
+
+        .coaster-loop {
+            position: absolute;
+            width: 205px;
+            height: 85px;
+            left: 50%;
+            top: 24px;
+            transform: translateX(-50%);
+            border: 5px solid #d692ba;
+            border-bottom-color: #bca7ff;
+            border-radius: 50%;
+        }
+
+        .coaster-car-loader {
+            position: absolute;
+            left: 50%;
+            top: 35px;
+            margin-left: -22px;
+            font-size: 40px;
+            transform-origin: 22px 42px;
+            animation: coasterLoop 1.1s linear infinite;
+        }
+
+        @keyframes coasterLoop {
+            from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        .loading-stars {
+            color: #c78bb5;
+            font-size: 17px;
+            letter-spacing: 14px;
+            animation: twinkle 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: .35; transform: scale(.96); }
+            to { opacity: 1; transform: scale(1.04); }
+        }
+
+        .loading-text {
+            margin-top: 10px;
+            color: #685572;
+            font-weight: 900;
+        }
+
+        .loading-dots::after {
+            content: "";
+            animation: dots 1.2s steps(4,end) infinite;
+        }
+
+        @keyframes dots {
+            0% { content: ""; }
+            25% { content: "."; }
+            50% { content: ".."; }
+            75%,100% { content: "..."; }
+        }
+
         @media (max-width: 800px) {
             nav { position: relative; flex-direction: column; }
             nav .links { justify-content: center; }
@@ -464,11 +662,15 @@
             .hero-art { min-height: 390px; }
             .steps { grid-template-columns: repeat(2, 1fr); }
             .components, .team { grid-template-columns: 1fr 1fr; }
+            .resources-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 520px) {
             h1 { letter-spacing: -2px; }
-            .steps, .components, .team, .status-grid { grid-template-columns: 1fr; }
+            .steps, .components, .team, .status-grid, .resources-grid { grid-template-columns: 1fr; }
+            .resource-card { grid-template-columns: 1fr; text-align: center; }
+            .resource-icon { margin: auto; }
+            .resource-card strong { justify-self: center; }
             section { margin: 65px auto; }
             .orbit { width: 280px; height: 280px; }
         }
@@ -477,6 +679,18 @@
 
 <body>
 
+<div id="loadingScreen" aria-hidden="true">
+    <div class="loading-box">
+        <div class="loading-logo">SAFE<span>ZONE</span></div>
+        <div class="coaster-loader">
+            <div class="coaster-loop"></div>
+            <div class="coaster-car-loader">🎢</div>
+        </div>
+        <div class="loading-stars">✦ ✧ ✦</div>
+        <div class="loading-text" id="loadingText">Preparando tu recorrido<span class="loading-dots"></span></div>
+    </div>
+</div>
+
 <nav>
     <a class="brand" href="#inicio">🎢 SAFEZONE</a>
     <div class="links">
@@ -484,7 +698,7 @@
         <a href="#funcionamiento">Funcionamiento</a>
         <a href="#componentes">Componentes</a>
         <a href="#lcd">LCD</a>
-        <a href="#codigo">Código</a>
+        <a href="#recursos">Recursos</a>
         <a href="#equipo">Equipo</a>
     </div>
 </nav>
@@ -649,6 +863,57 @@
         </div>
     </section>
 
+    <!-- 06 · RECURSOS DEL PROYECTO -->
+    <section id="recursos">
+        <div class="section-title">
+            <span>06 · Recursos del proyecto</span>
+            <h2>Explora SAFEZONE ✦</h2>
+            <p>Consulta todos los materiales que forman parte de nuestro proyecto.</p>
+        </div>
+
+        <div class="resources-grid">
+            <a class="resource-card" href="circuito.html" data-loading="Conectando con TECH LAB">
+                <div class="resource-icon">⚙️</div>
+                <div>
+                    <span class="resource-tag">TECH LAB</span>
+                    <h3>Circuito</h3>
+                    <p>Consulta la conexión de los componentes y la configuración técnica del sistema.</p>
+                </div>
+                <strong>Ver circuito →</strong>
+            </a>
+
+            <a class="resource-card" href="investigacion.html" data-loading="Abriendo investigación formal">
+                <div class="resource-icon">📚</div>
+                <div>
+                    <span class="resource-tag">DOCUMENTO</span>
+                    <h3>Investigación formal</h3>
+                    <p>Conoce la investigación y los fundamentos que respaldan nuestra propuesta.</p>
+                </div>
+                <strong>Leer investigación →</strong>
+            </a>
+
+            <a class="resource-card" href="infografia.html" data-loading="Preparando información visual">
+                <div class="resource-icon">🎨</div>
+                <div>
+                    <span class="resource-tag">VISUAL</span>
+                    <h3>Infografía</h3>
+                    <p>Explora la información principal del proyecto de una manera visual y sencilla.</p>
+                </div>
+                <strong>Ver infografía →</strong>
+            </a>
+
+            <a class="resource-card" href="podcast.html" data-loading="Sintonizando SAFEZONE">
+                <div class="resource-icon">🎙️</div>
+                <div>
+                    <span class="resource-tag">AUDIO</span>
+                    <h3>Podcast</h3>
+                    <p>Escucha nuestro podcast y conoce más sobre la problemática y la solución.</p>
+                </div>
+                <strong>Escuchar podcast →</strong>
+            </a>
+        </div>
+    </section>
+
     <section id="equipo">
         <div class="section-title">
             <span>06 · Nuestro equipo</span>
@@ -708,6 +973,3 @@
         }
     }
 </script>
-
-</body>
-</html>
