@@ -1,19 +1,713 @@
 <!DOCTYPE html>
 <html lang="es">
-    
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto final Teresa garcia, Madelin García, Mafer Cabrera</title>    <link rel="icon" type="image/png" href="recursos/img/LOGO_CAPOUILLIEZ - Isotipos Blancos-06.png">
-  <style> 
-    html, body{
-        height: 100%;
-        margin: 0%;
-        background: linear-gradient(135deg, #ffffff 0%, #ff99c2 100%);
-    background-attachment: fixed; /* Esto hace que el fondo no se mueva al bajar */
-    font-family: 'Poppins', sans-serif; /* Una fuente más moderna */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFEZONE | Sistema de Seguridad Automatizado</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+        :root {
+            --pink: #ff8fc7;
+            --pink-dark: #e96ba9;
+            --lavender: #bca7ff;
+            --blue: #8ed8ff;
+            --cream: #fffaff;
+            --ink: #302b3d;
+            --muted: #756d82;
+            --card: rgba(255,255,255,.82);
+            --shadow: 0 18px 45px rgba(91, 63, 110, .13);
         }
-  
-  </style>
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: "Nunito", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(255,143,199,.28), transparent 25%),
+                radial-gradient(circle at 90% 20%, rgba(142,216,255,.28), transparent 24%),
+                linear-gradient(135deg, #fff8fc, #f5f1ff 55%, #effaff);
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "✦  ˚  🎢  ˚  ✦  ˚  🔐  ˚  ✦";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .12;
+            font-size: 24px;
+            letter-spacing: 28px;
+            line-height: 100px;
+            z-index: -1;
+        }
+
+        nav {
+            position: sticky;
+            top: 14px;
+            z-index: 20;
+            width: min(1120px, calc(100% - 28px));
+            margin: 14px auto 0;
+            padding: 12px 18px;
+            background: rgba(255,255,255,.78);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,.95);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            font-weight: 900;
+            color: var(--pink-dark);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav a:not(.brand) {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: .9rem;
+            font-weight: 800;
+            padding: 8px 12px;
+            border-radius: 14px;
+        }
+
+        nav a:not(.brand):hover {
+            background: #fff0f8;
+            color: var(--pink-dark);
+        }
+
+        .hero {
+            width: min(1120px, calc(100% - 28px));
+            margin: 50px auto 25px;
+            min-height: 610px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 14px;
+            background: #fff;
+            border: 1px solid #f3dce9;
+            color: var(--pink-dark);
+            border-radius: 999px;
+            font-weight: 900;
+            font-size: .85rem;
+            box-shadow: 0 8px 20px rgba(233,107,169,.08);
+        }
+
+        h1 {
+            margin: 18px 0 8px;
+            font-size: clamp(3rem, 8vw, 6.7rem);
+            line-height: .88;
+            letter-spacing: -4px;
+        }
+
+        h1 span { color: var(--pink-dark); }
+
+        .hero h2 {
+            margin: 0;
+            font-size: clamp(1.15rem, 2vw, 1.55rem);
+            color: #5e566b;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .cta {
+            display: inline-flex;
+            margin-top: 14px;
+            padding: 14px 21px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--pink-dark), var(--lavender));
+            box-shadow: 0 12px 25px rgba(233,107,169,.25);
+            transition: .25s;
+        }
+
+        .cta:hover { transform: translateY(-3px) scale(1.02); }
+
+        .hero-art {
+            position: relative;
+            min-height: 430px;
+            display: grid;
+            place-items: center;
+        }
+
+        .orbit {
+            width: 350px;
+            height: 350px;
+            border: 2px dashed #d7c9f6;
+            border-radius: 50%;
+            position: absolute;
+            animation: spin 18s linear infinite;
+        }
+
+        .screen {
+            width: min(380px, 90%);
+            padding: 25px;
+            background: rgba(255,255,255,.9);
+            border: 2px solid white;
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .screen-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 900;
+            color: var(--muted);
+        }
+
+        .dot {
+            width: 13px;
+            height: 13px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #5bd99a;
+            box-shadow: 0 0 0 7px #e4faef;
+        }
+
+        .lcd {
+            margin: 22px 0;
+            padding: 20px;
+            border-radius: 18px;
+            background: #e9f8f1;
+            border: 2px solid #c5eadb;
+            color: #28654e;
+            font-family: monospace;
+            font-weight: 900;
+            box-shadow: inset 0 0 20px rgba(40,101,78,.06);
+        }
+
+        .lcd small { display: block; margin-top: 8px; }
+
+        .sim-btn {
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            padding: 13px;
+            border-radius: 16px;
+            color: white;
+            background: #6d6680;
+            font-family: inherit;
+            font-weight: 900;
+        }
+
+        .floating {
+            position: absolute;
+            padding: 12px 15px;
+            border-radius: 18px;
+            background: white;
+            box-shadow: var(--shadow);
+            font-weight: 900;
+            z-index: 4;
+            animation: float 3.5s ease-in-out infinite;
+        }
+
+        .f1 { top: 25px; left: 2%; }
+        .f2 { right: 0; bottom: 65px; animation-delay: 1s; }
+        .f3 { left: 2%; bottom: 15px; animation-delay: 1.7s; }
+
+        section {
+            width: min(1050px, calc(100% - 28px));
+            margin: 90px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title span {
+            color: var(--pink-dark);
+            font-weight: 900;
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            margin: 7px 0;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            max-width: 680px;
+            margin: auto;
+        }
+
+        .problem {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid white;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .big-icon { font-size: 3rem; }
+
+        .card h3 { margin-bottom: 8px; }
+
+        .card p, .card li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step .icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .components {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .component {
+            padding: 20px;
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 10px 28px rgba(91,63,110,.08);
+            border: 1px solid #f3edf7;
+        }
+
+        .component strong { display: block; margin-bottom: 4px; }
+        .component span { color: var(--muted); font-size: .92rem; }
+
+        .lcd-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .lcd-big {
+            background: #dff4e9;
+            border: 8px solid #c5d3cb;
+            border-radius: 16px;
+            padding: 35px 20px;
+            text-align: center;
+            color: #28654e;
+            font-family: monospace;
+            font-weight: 900;
+            font-size: 1.3rem;
+            box-shadow: inset 0 0 30px rgba(0,0,0,.05), 0 18px 35px rgba(50,90,70,.12);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .status {
+            padding: 14px;
+            border-radius: 17px;
+            background: #faf7fc;
+            font-weight: 800;
+        }
+
+        .status b { color: #41a877; }
+
+        .code-box {
+            background: #272431;
+            color: #f7d9e9;
+            border-radius: 25px;
+            padding: 25px;
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+            font-family: Consolas, monospace;
+            font-size: .9rem;
+            line-height: 1.65;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .member {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 10px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg,#ffd6ea,#dcd1ff);
+            font-size: 2rem;
+        }
+
+        .tech-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            background: rgba(255,255,255,.86);
+            border: 1px solid white;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            transition: .25s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 22px 48px rgba(91, 63, 110, .16);
+        }
+
+        .tech-icon {
+            width: 75px;
+            height: 75px;
+            flex: 0 0 75px;
+            display: grid;
+            place-items: center;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #ffe0ef, #ded5ff);
+            font-size: 2.3rem;
+        }
+
+        .tech-card h3 {
+            margin: 0 0 5px;
+            font-size: 1.35rem;
+        }
+
+        .tech-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .tech-button {
+            margin: 0 0 0 auto;
+            white-space: nowrap;
+        }
+
+        footer {
+            margin-top: 100px;
+            padding: 35px 20px;
+            text-align: center;
+            background: #302b3d;
+            color: white;
+        }
+
+        footer span { color: #ffb8da; }
+
+        .alert { background: #ffe3eb !important; border-color: #ffabc5 !important; color: #a63358 !important; }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 800px) {
+            nav { position: relative; flex-direction: column; }
+            nav .links { justify-content: center; }
+            .hero, .problem, .lcd-showcase { grid-template-columns: 1fr; }
+            .hero { margin-top: 35px; }
+            .hero-art { min-height: 390px; }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .components, .team { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 520px) {
+            h1 { letter-spacing: -2px; }
+            .steps, .components, .team, .status-grid { grid-template-columns: 1fr; }
+            section { margin: 65px auto; }
+            .orbit { width: 280px; height: 280px; }
+        }
+    </style>
 </head>
+
 <body>
+
+<nav>
+    <a class="brand" href="#inicio">🎢 SAFEZONE</a>
+    <div class="links">
+        <a href="#problematica">Problema</a>
+        <a href="#funcionamiento">Funcionamiento</a>
+        <a href="#componentes">Componentes</a>
+        <a href="#lcd">LCD</a>
+        <a href="#codigo">Código</a>
+        <a href="#equipo">Equipo</a>
+    </div>
+</nav>
+
+<main>
+    <section class="hero" id="inicio">
+        <div>
+            <span class="tag">🔐 Proyecto de TICS · 11B</span>
+            <h1>SAFE<span>ZONE</span></h1>
+            <h2>Seguridad inteligente para juegos mecánicos 🎢</h2>
+            <p>
+                Sistema de seguridad automatizado diseñado para detectar el ingreso
+                no autorizado a una zona de restricción y generar una alerta inmediata.
+            </p>
+            <a class="cta" href="#funcionamiento">Explorar el sistema ✨</a>
+        </div>
+
+        <div class="hero-art">
+            <div class="orbit"></div>
+            <div class="floating f1">📡 Sensor activo</div>
+            <div class="floating f2">🔐 Zona protegida</div>
+            <div class="floating f3">✨ Automatización</div>
+
+            <div class="screen">
+                <div class="screen-top">
+                    <span>SAFEZONE SYSTEM</span>
+                    <span class="dot"></span>
+                </div>
+                <div class="lcd" id="lcdMini">
+                    SISTEMA ACTIVO
+                    <small>ZONA SEGURA ✓</small>
+                </div>
+                <button class="sim-btn" onclick="simularAlerta()">🚨 Simular alerta</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="problematica">
+        <div class="section-title">
+            <span>01 · El problema</span>
+            <h2>¿Por qué SAFEZONE?</h2>
+            <p>Una zona de restricción debe mantenerse segura mientras una atracción está funcionando.</p>
+        </div>
+
+        <div class="problem">
+            <article class="card">
+                <div class="big-icon">🎢</div>
+                <h3>Situación identificada</h3>
+                <p>
+                    En zonas de atracciones infantiles o mecánicas, algunos visitantes,
+                    especialmente niños, pueden cruzar la línea de seguridad perimetral
+                    mientras el juego está en funcionamiento.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="big-icon">🛡️</div>
+                <h3>Propuesta</h3>
+                <p>
+                    Utilizar sensores y señales de alerta para detectar un posible
+                    ingreso a la zona de exclusión y avisar al operador de manera inmediata.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section id="funcionamiento">
+        <div class="section-title">
+            <span>02 · Funcionamiento</span>
+            <h2>Así trabaja el sistema ⚙️</h2>
+            <p>El circuito combina detección, procesamiento y alertas.</p>
+        </div>
+
+        <div class="steps">
+            <article class="card step">
+                <div class="icon">📡</div>
+                <h3>01. Distancia</h3>
+                <p>El HC-SR04 mide constantemente la distancia hacia la zona de exclusión.</p>
+            </article>
+
+            <article class="card step">
+                <div class="icon">👁️</div>
+                <h3>02. Movimiento</h3>
+                <p>El sensor PIR detecta movimiento no autorizado en el área restringida.</p>
+            </article>
+
+            <article class="card step">
+                <div class="icon">🚨</div>
+                <h3>03. Alerta</h3>
+                <p>Los LEDs RGB parpadean en rojo y el buzzer emite un patrón de advertencia.</p>
+            </article>
+
+            <article class="card step">
+                <div class="icon">🔘</div>
+                <h3>04. Reinicio</h3>
+                <p>El operador utiliza el push button cuando la zona vuelve a estar despejada.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="componentes">
+        <div class="section-title">
+            <span>03 · Hardware</span>
+            <h2>Los componentes 🔧</h2>
+            <p>Elementos principales utilizados en el circuito del proyecto.</p>
+        </div>
+
+        <div class="components">
+            <div class="component">📡 <strong>HC-SR04</strong><span>Sensor ultrasónico de distancia</span></div>
+            <div class="component">👁️ <strong>PIR</strong><span>Detección de movimiento</span></div>
+            <div class="component">💡 <strong>LED RGB</strong><span>Alerta visual</span></div>
+            <div class="component">🔊 <strong>Buzzer</strong><span>Alerta sonora</span></div>
+            <div class="component">🔘 <strong>Push Button</strong><span>Reinicio del operador</span></div>
+            <div class="component">🖥️ <strong>LCD 16x2</strong><span>Mensajes del estado del sistema</span></div>
+        </div>
+    </section>
+
+    <section id="lcd">
+        <div class="section-title">
+            <span>04 · Componente estrella</span>
+            <h2>Pantalla LCD 16x2 🖥️</h2>
+            <p>La pantalla permite mostrar información específica en tiempo real.</p>
+        </div>
+
+        <div class="lcd-showcase">
+            <div class="lcd-big" id="lcdBig">
+                SISTEMA ACTIVO<br>
+                ZONA SEGURA ✓
+            </div>
+
+            <div class="card">
+                <h3>Más información, menos confusión ✨</h3>
+                <p>
+                    Además de las luces y sonidos, la LCD permite que el operador
+                    conozca qué está ocurriendo mediante mensajes claros.
+                </p>
+
+                <div class="status-grid">
+                    <div class="status">Estado <b>ACTIVO</b></div>
+                    <div class="status">Zona <b>SEGURA</b></div>
+                    <div class="status">Sensor <b>CONECTADO</b></div>
+                    <div class="status">Alerta <b>INACTIVA</b></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="codigo">
+        <div class="section-title">
+            <span>05 · Área técnica</span>
+            <h2>TECH LAB 🔧</h2>
+            <p>Explora la configuración del circuito, los componentes y la programación de SAFEZONE.</p>
+        </div>
+
+        <div class="tech-card">
+            <div class="tech-icon">⚙️</div>
+            <div>
+                <h3>Configuración del circuito</h3>
+                <p>Consulta los pines utilizados y la configuración inicial del sistema.</p>
+            </div>
+            <a class="cta tech-button" href="circuito.html">Ver área técnica →</a>
+        </div>
+    </section>
+
+    <section id="equipo">
+        <div class="section-title">
+            <span>06 · Nuestro equipo</span>
+            <h2>Detrás de SAFEZONE 💗</h2>
+        </div>
+
+        <div class="team">
+            <div class="member">
+                <div class="avatar">🎀</div>
+                <h3>Teresa García</h3>
+                <p>Integrante · 11B</p>
+            </div>
+            <div class="member">
+                <div class="avatar">🌷</div>
+                <h3>María Fernanda Cabrera</h3>
+                <p>Integrante · 11B</p>
+            </div>
+            <div class="member">
+                <div class="avatar">🩷</div>
+                <h3>Madelin García</h3>
+                <p>Integrante · 11B</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    🎢 <strong>SAFE<span>ZONE</span></strong> · Proyecto de TICS · 2026
+    <br><small>Tecnología que ayuda a proteger la diversión. ✨</small>
+</footer>
+
+<script>
+    let alertaActiva = false;
+
+    function simularAlerta() {
+        const mini = document.getElementById("lcdMini");
+        const big = document.getElementById("lcdBig");
+
+        alertaActiva = !alertaActiva;
+
+        if (alertaActiva) {
+            mini.classList.add("alert");
+            big.classList.add("alert");
+
+            mini.innerHTML = "!! PELIGRO !!<small>INTRUSO EN ZONA 1</small>";
+            big.innerHTML = "¡PELIGRO!<br>INTRUSO EN ZONA 1";
+
+            document.querySelector(".sim-btn").textContent = "🔘 Reiniciar sistema";
+        } else {
+            mini.classList.remove("alert");
+            big.classList.remove("alert");
+
+            mini.innerHTML = "SISTEMA ACTIVO<small>ZONA SEGURA ✓</small>";
+            big.innerHTML = "SISTEMA ACTIVO<br>ZONA SEGURA ✓";
+
+            document.querySelector(".sim-btn").textContent = "🚨 Simular alerta";
+        }
+    }
+</script>
+
+</body>
+</html>
