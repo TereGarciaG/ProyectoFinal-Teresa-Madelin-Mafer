@@ -1,0 +1,36 @@
+from pathlib import Path
+
+path = Path("/mnt/data/investigacion.html")
+html = path.read_text(encoding="utf-8")
+
+marker = '<section class="section">\n  <div class="section-title"><span>06 · Fuente del proyecto</span><h2>Referencia técnica</h2></div>'
+
+preview = r'''
+<section class="section" id="documento">
+  <div class="section-title">
+    <span>06 · Documento</span>
+    <h2>Investigación en Word 📄</h2>
+    <p>Consulta una vista previa del documento formal directamente desde esta página.</p>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <div class="icon" style="font-size:3rem">📄✨</div>
+    <h3>Vista previa del documento</h3>
+    <p>Coloca tu archivo de Word en la misma carpeta que esta página y así podrás mostrarlo dentro del sitio.</p>
+
+    <div style="margin:22px auto;max-width:900px;border:1px solid #eadff0;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(70,45,80,.08)">
+      <iframe
+        src="investigacion-word.docx"
+        width="100%"
+        height="650"
+        style="border:0;display:block"
+        title="Vista previa de la investigación en Word">
+      </iframe>
+    </div>
+
+    <p style="font-size:.9rem">
+      <span class="pill">Archivo: investigacion-word.docx</span>
+    </p>
+    <a class="cta" href="investigacion-word.docx" target="_blank">Abrir documento 📄</a>
+  </div>
+</section>
