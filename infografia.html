@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SAFEZONE | Infografía</title>
 
     <style>
@@ -12,33 +13,209 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        :root {
+            --pink: #f5b8d0;
+            --pink-dark: #e89abb;
+            --lavender: #cfc4f7;
+            --blue: #b9dff5;
+            --white: #ffffff;
+            --text: #514b61;
+            --bg: #faf8ff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* =========================
+           ENCABEZADO / NAVBAR
+        ========================= */
+
+        nav {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            padding: 15px 6%;
+            background: rgba(255, 255, 255, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 18px rgba(100, 80, 130, 0.10);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: linear-gradient(
+                135deg,
+                var(--pink),
+                var(--lavender),
+                var(--blue)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 5px 15px rgba(180, 150, 210, 0.25);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
             background: #f7f3ff;
+            padding: 9px 15px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: 0.25s ease;
+            border: 1px solid transparent;
         }
 
-        .pdf-container {
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            background: white;
+            border-color: var(--pink);
+            box-shadow: 0 5px 12px rgba(180, 150, 210, 0.18);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(
+                135deg,
+                var(--pink),
+                var(--lavender)
+            );
+            color: white;
+            box-shadow: 0 5px 14px rgba(190, 150, 210, 0.25);
+        }
+
+        /* =========================
+           CONTENEDOR DEL PDF
+        ========================= */
+
+        .pdf-section {
             width: 100%;
-            height: 100vh;
+            height: calc(100vh - 73px);
+            padding: 20px;
         }
 
-        iframe {
+        .pdf-viewer {
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
+            border-radius: 22px;
+            background: white;
+            box-shadow: 0 8px 30px rgba(100, 80, 130, 0.12);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 4%;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+                padding: 8px 11px;
+            }
+
+            .pdf-section {
+                height: calc(100vh - 125px);
+                padding: 10px;
+            }
+
+            .pdf-viewer {
+                border-radius: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="pdf-container">
-        <iframe src="infografia.pdf" title="Infografía SAFEZONE">
+    <!-- =========================
+         ENCABEZADO ORIGINAL
+    ========================== -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            <div class="logo-icon">🛡️</div>
+            <span>SAFEZONE</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="investigacion.html">
+                Investigación
+            </a>
+
+            <a href="circuito.html">
+                Circuito
+            </a>
+
+            <a href="infografia.html" class="active">
+                Infografía
+            </a>
+
+            <a href="podcast.html">
+                Podcast
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         ÚNICAMENTE EL PDF
+    ========================== -->
+
+    <section class="pdf-section">
+
+        <iframe
+            class="pdf-viewer"
+            src="infografia.pdf"
+            title="Infografía SAFEZONE">
         </iframe>
-    </div>
+
+    </section>
 
 </body>
 </html>
