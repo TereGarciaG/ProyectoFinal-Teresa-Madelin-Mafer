@@ -1,221 +1,339 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SAFEZONE | Infografía</title>
+<title>Infografía | SAFEZONE</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        :root {
-            --pink: #f5b8d0;
-            --pink-dark: #e89abb;
-            --lavender: #cfc4f7;
-            --blue: #b9dff5;
-            --white: #ffffff;
-            --text: #514b61;
-            --bg: #faf8ff;
-        }
+:root{
+  --pink:#ffb8da;
+  --pink2:#ffdced;
+  --lav:#d9ccff;
+  --blue:#ccecff;
+  --ink:#302b3d;
+  --white:#fffaff;
+  --line:#eadff0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
+*{
+  box-sizing:border-box;
+}
 
-        /* =========================
-           ENCABEZADO / NAVBAR
-        ========================= */
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#fffaff,#f8f3ff);
+  color:var(--ink);
+}
 
-        nav {
-            width: 100%;
-            padding: 15px 6%;
-            background: rgba(255, 255, 255, 0.94);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 18px rgba(100, 80, 130, 0.10);
-            backdrop-filter: blur(10px);
-        }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
+/* =========================
+   ENCABEZADO
+========================= */
 
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            background: linear-gradient(
-                135deg,
-                var(--pink),
-                var(--lavender),
-                var(--blue)
-            );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            box-shadow: 0 5px 15px rgba(180, 150, 210, 0.25);
-        }
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 6%;
+  background:rgba(255,250,255,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
 
-        .nav-links {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+.brand{
+  font-weight:900;
+  font-size:1.25rem;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            background: #f7f3ff;
-            padding: 9px 15px;
-            border-radius: 20px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: 0.25s ease;
-            border: 1px solid transparent;
-        }
+.links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
 
-        .nav-links a:hover {
-            transform: translateY(-2px);
-            background: white;
-            border-color: var(--pink);
-            box-shadow: 0 5px 12px rgba(180, 150, 210, 0.18);
-        }
+.links a{
+  font-weight:700;
+  font-size:.92rem;
+  transition:.25s;
+}
 
-        .nav-links a.active {
-            background: linear-gradient(
-                135deg,
-                var(--pink),
-                var(--lavender)
-            );
-            color: white;
-            box-shadow: 0 5px 14px rgba(190, 150, 210, 0.25);
-        }
+.links a:hover{
+  color:#ad6f98;
+  transform:translateY(-2px);
+}
 
-        /* =========================
-           CONTENEDOR DEL PDF
-        ========================= */
+/* =========================
+   CONTENIDO
+========================= */
 
-        .pdf-section {
-            width: 100%;
-            height: calc(100vh - 73px);
-            padding: 20px;
-        }
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:20px;
+}
 
-        .pdf-viewer {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 22px;
-            background: white;
-            box-shadow: 0 8px 30px rgba(100, 80, 130, 0.12);
-        }
+.hero{
+  padding:70px 0 35px;
+  text-align:center;
+}
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+.tag{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--pink2);
+  font-weight:800;
+}
 
-        @media (max-width: 800px) {
+h1{
+  font-size:clamp(3rem,8vw,6rem);
+  margin:18px 0 4px;
+  letter-spacing:-4px;
+}
 
-            nav {
-                flex-direction: column;
-                gap: 12px;
-                padding: 12px 4%;
-            }
+h1 span{
+  color:#d18bb0;
+}
 
-            .nav-links {
-                justify-content: center;
-            }
+.hero p,
+.intro{
+  max-width:760px;
+  margin:18px auto;
+  line-height:1.75;
+  font-size:1.05rem;
+}
 
-            .nav-links a {
-                font-size: 0.78rem;
-                padding: 8px 11px;
-            }
+/* =========================
+   SECCIÓN PDF
+========================= */
 
-            .pdf-section {
-                height: calc(100vh - 125px);
-                padding: 10px;
-            }
+.section{
+  margin:30px 0 60px;
+}
 
-            .pdf-viewer {
-                border-radius: 15px;
-            }
-        }
-    </style>
+.section-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.section-title span{
+  font-weight:900;
+  color:#ad6f98;
+}
+
+.section-title h2{
+  font-size:clamp(1.7rem,4vw,3rem);
+  margin:10px 0;
+}
+
+.card{
+  background:rgba(255,255,255,.86);
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 12px 35px rgba(70,45,80,.08);
+}
+
+.pdf-text{
+  text-align:center;
+  line-height:1.7;
+  margin-top:0;
+  margin-bottom:20px;
+  font-size:1rem;
+}
+
+/* =========================
+   VISOR DEL PDF
+========================= */
+
+.pdf-viewer{
+  width:100%;
+  height:750px;
+  border:none;
+  border-radius:20px;
+  background:white;
+  display:block;
+  box-shadow:0 5px 20px rgba(70,45,80,.08);
+}
+
+/* =========================
+   PIE DE PÁGINA
+========================= */
+
+footer{
+  text-align:center;
+  padding:35px;
+  background:var(--ink);
+  color:white;
+  margin-top:70px;
+}
+
+footer span{
+  color:var(--pink);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+  nav{
+    position:relative;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .links{
+    justify-content:center;
+    gap:12px;
+  }
+
+  .links a{
+    font-size:.82rem;
+  }
+
+  .pdf-viewer{
+    height:600px;
+  }
+
+  .card{
+    padding:15px;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- =========================
-         ENCABEZADO ORIGINAL
-    ========================== -->
+<!-- =========================
+     ENCABEZADO
+========================= -->
 
-    <nav>
+<nav>
 
-        <a href="index.html" class="logo">
-            <div class="logo-icon">🛡️</div>
-            <span>SAFEZONE</span>
-        </a>
+  <a class="brand" href="index.html">
+    🎢 SAFEZONE
+  </a>
 
-        <div class="nav-links">
+  <div class="links">
 
-            <a href="index.html">
-                Inicio
-            </a>
+    <a href="index.html">
+      Inicio
+    </a>
 
-            <a href="investigacion.html">
-                Investigación
-            </a>
+    <a href="circuito.html">
+      Circuito
+    </a>
 
-            <a href="circuito.html">
-                Circuito
-            </a>
+    <a href="investigacion.html">
+      Investigación
+    </a>
 
-            <a href="infografia.html" class="active">
-                Infografía
-            </a>
+    <a href="infografia.html">
+      Infografía
+    </a>
 
-            <a href="podcast.html">
-                Podcast
-            </a>
+    <a href="podcast.html">
+      Podcast
+    </a>
 
-        </div>
+  </div>
 
-    </nav>
+</nav>
 
 
-    <!-- =========================
-         ÚNICAMENTE EL PDF
-    ========================== -->
+<!-- =========================
+     CONTENIDO PRINCIPAL
+========================= -->
 
-    <section class="pdf-section">
+<main>
 
-        <iframe
-            class="pdf-viewer"
-            src="infografia.pdf"
-            title="Infografía SAFEZONE">
-        </iframe>
+  <section class="hero">
 
-    </section>
+    <span class="tag">
+      🩷 INFOGRAFÍA · SAFEZONE
+    </span>
+
+    <h1>
+      SAFE<span>ZONE</span>
+    </h1>
+
+    <p class="intro">
+      Aquí puedes observar la infografía completa de SAFEZONE en formato PDF.
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       VISTA PREVIA DEL PDF
+  ========================== -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>
+        01 · Vista previa del PDF
+      </span>
+
+      <h2>
+        Infografía SAFEZONE
+      </h2>
+
+    </div>
+
+
+    <div class="card">
+
+      <p class="pdf-text">
+        📄 Aquí puedes observar la infografía completa en formato PDF.
+      </p>
+
+
+      <iframe
+        class="pdf-viewer"
+        src="infografia.pdf"
+        title="Infografía SAFEZONE">
+      </iframe>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- =========================
+     PIE DE PÁGINA
+========================= -->
+
+<footer>
+
+  SAFEZONE · Proyecto de TICS · 11B ·
+
+  <span>
+    Seguridad inteligente 🎢
+  </span>
+
+</footer>
+
 
 </body>
 </html>
