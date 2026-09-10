@@ -50,351 +50,653 @@
             min-height: 100vh;
         }
 
+
+        /* =========================
+           BARRA SUPERIOR
+        ========================= */
+
         .navbar {
+
             width: 100%;
+
             padding: 18px 6%;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             background: rgba(255,255,255,.88);
+
             backdrop-filter: blur(12px);
+
             border-bottom: 1px solid rgba(156,135,232,.12);
+
             position: sticky;
+
             top: 0;
+
             z-index: 100;
         }
 
+
         .brand {
+
             text-decoration: none;
+
             color: var(--ink);
+
             font-weight: 900;
+
             font-size: 1.25rem;
+
             white-space: nowrap;
         }
 
+
         .nav-links {
+
             display: flex;
+
             gap: 18px;
+
             align-items: center;
+
             flex-wrap: wrap;
         }
 
+
         .nav-links a {
+
             text-decoration: none;
+
             color: var(--ink);
+
             font-weight: 800;
+
             font-size: .92rem;
+
             transition: .25s;
         }
 
+
         .nav-links a:hover {
+
             color: var(--pink);
+
             transform: translateY(-2px);
         }
 
+
+        /* =========================
+           BOTÓN VOLVER
+        ========================= */
+
         .top {
-            width: min(1050px, calc(100% - 28px));
+
+            width: min(
+                1050px,
+                calc(100% - 28px)
+            );
+
             margin: 25px auto;
         }
 
+
         .back {
+
             display: inline-flex;
+
             text-decoration: none;
+
             color: var(--pink);
+
             font-weight: 900;
+
             background: white;
+
             padding: 10px 15px;
+
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(91,63,110,.08);
+
+            box-shadow:
+                0 8px 20px rgba(91,63,110,.08);
         }
 
+
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            width: min(1050px, calc(100% - 28px));
+
+            width: min(
+                1050px,
+                calc(100% - 28px)
+            );
+
             margin: 55px auto 40px;
+
             text-align: center;
         }
 
+
         .tag {
+
             color: var(--pink);
+
             font-weight: 900;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
+
             font-size: .82rem;
         }
 
+
         h1 {
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
+
+            font-size: clamp(
+                2.8rem,
+                7vw,
+                5.5rem
+            );
+
             margin: 8px 0;
+
             letter-spacing: -3px;
         }
 
+
         h1 span {
+
             color: var(--pink);
         }
 
+
         header p {
+
             color: var(--muted);
+
             max-width: 650px;
+
             margin: auto;
+
             line-height: 1.7;
         }
 
+
+        /* =========================
+           CONTENIDO
+        ========================= */
+
         main {
-            width: min(1050px, calc(100% - 28px));
+
+            width: min(
+                1050px,
+                calc(100% - 28px)
+            );
+
             margin: auto;
         }
 
+
         .panel {
+
             background: rgba(255,255,255,.86);
+
             border: 1px solid white;
+
             border-radius: 28px;
+
             padding: 28px;
+
             box-shadow: var(--shadow);
+
             margin-bottom: 25px;
         }
 
+
         .panel h2 {
+
             margin-top: 0;
         }
 
+
+        /* =========================
+           PINES
+        ========================= */
+
         .pins {
+
             display: grid;
-            grid-template-columns: repeat(2,1fr);
+
+            grid-template-columns:
+                repeat(2,1fr);
+
             gap: 12px;
         }
 
+
         .pin {
+
             display: flex;
+
             justify-content: space-between;
+
             gap: 20px;
+
             padding: 14px 17px;
+
             background: #faf7fc;
+
             border-radius: 16px;
         }
 
+
         .pin span {
+
             color: var(--muted);
         }
 
+
         .pin code {
+
             color: var(--pink);
+
             font-weight: 900;
         }
 
+
+        /* =========================
+           CONTENEDOR DEL CÓDIGO
+        ========================= */
+
         .code-container {
+
             position: relative;
+
             background: #272431;
+
             border-radius: 22px;
+
             overflow: hidden;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+
+            box-shadow:
+                inset 0 0 0 1px rgba(255,255,255,.05);
         }
+
+
+        /* =========================
+           BARRA DEL EDITOR
+        ========================= */
 
         .code-header {
+
             height: 55px;
+
             padding: 0 18px;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             background: #211f2b;
-            border-bottom: 1px solid rgba(255,255,255,.08);
+
+            border-bottom:
+                1px solid rgba(255,255,255,.08);
         }
 
+
         .code-title {
+
             display: flex;
+
             align-items: center;
+
             gap: 8px;
+
             color: #d8d3e3;
+
             font-size: .85rem;
+
             font-weight: 800;
         }
 
+
         .dot {
+
             width: 10px;
+
             height: 10px;
+
             border-radius: 50%;
+
             display: inline-block;
         }
+
 
         .dot.red {
             background: #ff6b81;
         }
 
+
         .dot.yellow {
             background: #ffd66b;
         }
+
 
         .dot.green {
             background: #6be58d;
         }
 
+
+        /* =========================
+           BOTÓN COPIAR
+        ========================= */
+
         .copy-btn {
+
             border: none;
+
             background: linear-gradient(
                 135deg,
                 var(--pink),
                 var(--lavender)
             );
+
             color: white;
+
             font-family: "Nunito", sans-serif;
+
             font-weight: 900;
+
             padding: 8px 14px;
+
             border-radius: 10px;
+
             cursor: pointer;
+
             transition: .25s;
+
             font-size: .82rem;
         }
 
+
         .copy-btn:hover {
+
             transform: translateY(-2px);
-            box-shadow: 0 7px 15px rgba(233,107,169,.25);
+
+            box-shadow:
+                0 7px 15px rgba(233,107,169,.25);
         }
 
+
         .copy-btn:active {
+
             transform: scale(.96);
         }
 
+
+        /* =========================
+           ÁREA DEL CÓDIGO
+        ========================= */
+
         .code {
+
             height: 480px;
+
             overflow-y: auto;
+
             overflow-x: auto;
+
             padding: 22px;
+
             color: #f7d9e9;
+
             line-height: 1.6;
-            font-family: Consolas, "Courier New", monospace;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
             font-size: .88rem;
+
             white-space: pre;
+
             scrollbar-width: thin;
-            scrollbar-color: #9c87e8 #211f2b;
+
+            scrollbar-color:
+                #9c87e8
+                #211f2b;
         }
 
+
+        /* Scrollbar para Chrome */
+
         .code::-webkit-scrollbar {
+
             width: 10px;
+
             height: 10px;
         }
 
+
         .code::-webkit-scrollbar-track {
+
             background: #211f2b;
         }
 
+
         .code::-webkit-scrollbar-thumb {
+
             background: #9c87e8;
+
             border-radius: 10px;
         }
 
+
         .code::-webkit-scrollbar-thumb:hover {
+
             background: #e96ba9;
         }
 
+
+        /* =========================
+           NOTA
+        ========================= */
+
         .note {
+
             background:
                 linear-gradient(
                     135deg,
                     #fff0f8,
                     #f0edff
                 );
+
             border-radius: 22px;
+
             padding: 20px;
+
             line-height: 1.7;
         }
 
+
+        /* =========================
+           VIDEO
+        ========================= */
+
         .video-container {
+
             margin-top: 22px;
+
             background:
                 linear-gradient(
                     135deg,
                     #fff0f8,
                     #f0edff
                 );
+
             border-radius: 22px;
+
             padding: 16px;
-            box-shadow: 0 12px 30px rgba(91,63,110,.10);
+
+            box-shadow:
+                0 12px 30px rgba(91,63,110,.10);
+
             border: 1px solid rgba(255,255,255,.9);
         }
 
+
         .video-title {
+
             display: flex;
+
             align-items: center;
+
             gap: 8px;
+
             margin-bottom: 12px;
+
             color: var(--ink);
+
             font-weight: 900;
+
             font-size: .95rem;
         }
 
+
         .video-container video {
+
             display: block;
+
             width: 100%;
+
             max-height: 600px;
+
             border-radius: 16px;
+
             background: #272431;
-            box-shadow: 0 8px 25px rgba(91,63,110,.14);
+
+            box-shadow:
+                0 8px 25px rgba(91,63,110,.14);
         }
 
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
+
             margin-top: 80px;
+
             padding: 30px;
+
             text-align: center;
+
             background: #302b3d;
+
             color: white;
         }
 
+
         footer span {
+
             color: #ffb8da;
         }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
         @media(max-width:750px) {
 
             .navbar {
+
                 flex-direction: column;
+
                 gap: 12px;
             }
 
+
             .nav-links {
+
                 justify-content: center;
+
                 gap: 12px;
             }
         }
 
+
         @media(max-width:650px) {
 
             .pins {
+
                 grid-template-columns: 1fr;
             }
 
+
             .panel {
+
                 padding: 20px;
             }
 
+
             .code {
+
                 height: 400px;
+
                 font-size: .78rem;
             }
 
+
             .code-header {
+
                 padding: 0 12px;
             }
 
+
             .copy-btn {
+
                 padding: 7px 10px;
+
                 font-size: .75rem;
             }
 
+
             .video-container {
+
                 padding: 12px;
             }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     BARRA DE NAVEGACIÓN
+========================= -->
 
 <nav class="navbar">
 
     <a class="brand" href="index.html">
         🎢 SAFEZONE
     </a>
+
 
     <div class="nav-links">
 
@@ -422,6 +724,12 @@
 
 </nav>
 
+
+
+<!-- =========================
+     VOLVER
+========================= -->
+
 <div class="top">
 
     <a class="back" href="index.html">
@@ -430,25 +738,42 @@
 
 </div>
 
+
+
+<!-- =========================
+     ENCABEZADO
+========================= -->
+
 <header>
 
     <div class="tag">
         05 · Área técnica
     </div>
 
+
     <h1>
         TECH <span>LAB</span> ⚙️
     </h1>
 
+
     <p>
+
         Aquí se encuentra la configuración técnica
         del circuito de SAFEZONE: pines, programación
         y funcionamiento del sistema automatizado.
+
     </p>
 
 </header>
 
+
+
 <main>
+
+
+    <!-- =========================
+         DISTRIBUCIÓN DE PINES
+    ========================= -->
 
     <section class="panel">
 
@@ -456,61 +781,149 @@
             🔌 Distribución de pines
         </h2>
 
+
         <div class="pins">
 
-            <div class="pin">
-                <span>LED rojo</span>
-                <code>3</code>
-            </div>
 
             <div class="pin">
-                <span>LED amarillo</span>
-                <code>5</code>
+
+                <span>
+                    LED rojo
+                </span>
+
+                <code>
+                    3
+                </code>
+
             </div>
 
-            <div class="pin">
-                <span>LED verde</span>
-                <code>6</code>
-            </div>
 
             <div class="pin">
-                <span>Trig</span>
-                <code>A2</code>
+
+                <span>
+                    LED amarillo
+                </span>
+
+                <code>
+                    5
+                </code>
+
             </div>
 
-            <div class="pin">
-                <span>Echo</span>
-                <code>A1</code>
-            </div>
 
             <div class="pin">
-                <span>PIR</span>
-                <code>A0</code>
+
+                <span>
+                    LED verde
+                </span>
+
+                <code>
+                    6
+                </code>
+
             </div>
 
-            <div class="pin">
-                <span>SDA</span>
-                <code>A4</code>
-            </div>
 
             <div class="pin">
-                <span>SCL</span>
-                <code>A5</code>
+
+                <span>
+                    Trig
+                </span>
+
+                <code>
+                    A2
+                </code>
+
             </div>
 
-            <div class="pin">
-                <span>Push Button</span>
-                <code>7</code>
-            </div>
 
             <div class="pin">
-                <span>Buzzer</span>
-                <code>12</code>
+
+                <span>
+                    Echo
+                </span>
+
+                <code>
+                    A1
+                </code>
+
             </div>
+
+
+            <div class="pin">
+
+                <span>
+                    PIR
+                </span>
+
+                <code>
+                    A0
+                </code>
+
+            </div>
+
+
+            <div class="pin">
+
+                <span>
+                    SDA
+                </span>
+
+                <code>
+                    A4
+                </code>
+
+            </div>
+
+
+            <div class="pin">
+
+                <span>
+                    SCL
+                </span>
+
+                <code>
+                    A5
+                </code>
+
+            </div>
+
+
+            <div class="pin">
+
+                <span>
+                    Push Button
+                </span>
+
+                <code>
+                    7
+                </code>
+
+            </div>
+
+
+            <div class="pin">
+
+                <span>
+                    Buzzer
+                </span>
+
+                <code>
+                    12
+                </code>
+
+            </div>
+
 
         </div>
 
     </section>
+
+
+
+    <!-- =========================
+         CÓDIGO
+    ========================= -->
 
     <section class="panel">
 
@@ -518,14 +931,20 @@
             💻 Programación del circuito
         </h2>
 
+
         <div class="code-container">
+
+
+            <!-- BARRA SUPERIOR DEL EDITOR -->
 
             <div class="code-header">
 
                 <div class="code-title">
 
                     <span class="dot red"></span>
+
                     <span class="dot yellow"></span>
+
                     <span class="dot green"></span>
 
                     <span>
@@ -533,6 +952,7 @@
                     </span>
 
                 </div>
+
 
                 <button
                     class="copy-btn"
@@ -544,6 +964,10 @@
                 </button>
 
             </div>
+
+
+
+            <!-- CÓDIGO -->
 
             <div
                 class="code"
@@ -692,6 +1116,10 @@ void medirDistancia()
 void loop()
 {
 
+  // ====================================================
+  // MEDIR SENSORES
+  // ====================================================
+
   medirDistancia();
 
   Movimiento = digitalRead(PIR);
@@ -699,8 +1127,16 @@ void loop()
   EstadoBoton = digitalRead(Button);
 
 
+  // ====================================================
+  // SI NO ESTÁ EN ALARMA
+  // ====================================================
+
   if (Alarma == false)
   {
+
+    // --------------------------------------------------
+    // SI DETECTA PELIGRO
+    // --------------------------------------------------
 
     if (
         Distancia <= DistanciaSegura ||
@@ -710,21 +1146,31 @@ void loop()
 
       Alarma = true;
 
+
       digitalWrite(LEDv, LOW);
 
+
       lcd.clear();
+
 
       lcd.setCursor(0, 0);
 
       lcd.print("PELIGRO!");
 
+
       lcd.setCursor(0, 1);
 
       lcd.print("Zona 1 ALERTA");
 
+
       delay(300);
 
     }
+
+
+    // --------------------------------------------------
+    // SI TODO ESTÁ SEGURO
+    // --------------------------------------------------
 
     else
     {
@@ -735,11 +1181,14 @@ void loop()
 
       digitalWrite(LEDr, LOW);
 
+
       noTone(Buzzer);
+
 
       lcd.setCursor(0, 0);
 
       lcd.print("Sistema Activo ");
+
 
       lcd.setCursor(0, 1);
 
@@ -750,8 +1199,16 @@ void loop()
   }
 
 
+  // ====================================================
+  // SI ESTÁ EN ALARMA
+  // ====================================================
+
   if (Alarma == true)
   {
+
+    // --------------------------------------------------
+    // ACTIVAR ALARMA
+    // --------------------------------------------------
 
     digitalWrite(LEDv, LOW);
 
@@ -759,36 +1216,57 @@ void loop()
 
     digitalWrite(LEDr, HIGH);
 
+
     tone(Buzzer, 1000);
+
 
     lcd.setCursor(0, 0);
 
     lcd.print("PELIGRO!        ");
+
 
     lcd.setCursor(0, 1);
 
     lcd.print("Presione RESET  ");
 
 
+    // --------------------------------------------------
+    // REVISAR BOTÓN
+    // --------------------------------------------------
+
     if (digitalRead(Button) == HIGH)
     {
+
+      // Apagamos temporalmente la alarma
 
       noTone(Buzzer);
 
       digitalWrite(LEDr, LOW);
 
+
       lcd.clear();
+
 
       lcd.setCursor(0, 0);
 
       lcd.print("VERIFICANDO...");
 
+
       delay(500);
+
+
+      // ------------------------------------------------
+      // VOLVER A MEDIR TODO
+      // ------------------------------------------------
 
       medirDistancia();
 
       Movimiento = digitalRead(PIR);
 
+
+      // ------------------------------------------------
+      // COMPROBAR SI ESTÁ SEGURO
+      // ------------------------------------------------
 
       if (
           Movimiento == LOW &&
@@ -796,9 +1274,15 @@ void loop()
          )
       {
 
+        // ==============================================
+        // ZONA SEGURA
+        // ==============================================
+
         Alarma = false;
 
+
         noTone(Buzzer);
+
 
         digitalWrite(LEDr, LOW);
 
@@ -806,24 +1290,34 @@ void loop()
 
         digitalWrite(LEDv, HIGH);
 
+
         lcd.clear();
+
 
         lcd.setCursor(0, 0);
 
         lcd.print("Sistema Activo");
 
+
         lcd.setCursor(0, 1);
 
         lcd.print("Zona Segura");
+
 
         delay(1500);
 
       }
 
+
       else
       {
 
+        // ==============================================
+        // TODAVÍA HAY PELIGRO
+        // ==============================================
+
         Alarma = true;
+
 
         digitalWrite(LEDv, LOW);
 
@@ -831,17 +1325,22 @@ void loop()
 
         digitalWrite(LEDr, HIGH);
 
+
         tone(Buzzer, 1000);
 
+
         lcd.clear();
+
 
         lcd.setCursor(0, 0);
 
         lcd.print("NO REINICIAR");
 
+
         lcd.setCursor(0, 1);
 
         lcd.print("Zona ocupada!");
+
 
         delay(2000);
 
@@ -849,9 +1348,15 @@ void loop()
 
     }
 
+
+    // --------------------------------------------------
+    // PARPADEO DEL LED ROJO
+    // --------------------------------------------------
+
     digitalWrite(LEDr, LOW);
 
     delay(250);
+
 
     digitalWrite(LEDr, HIGH);
 
@@ -867,11 +1372,18 @@ void loop()
 
     </section>
 
+
+
+    <!-- =========================
+         EXPLICACIÓN
+    ========================= -->
+
     <section class="panel">
 
         <h2>
             🧠 ¿Qué representa?
         </h2>
+
 
         <div class="note">
 
@@ -892,6 +1404,11 @@ void loop()
             las condiciones de la zona antes de desactivar la alarma.
 
         </div>
+
+
+        <!-- =========================
+             VIDEO DEL PROYECTO
+        ========================= -->
 
         <div class="video-container">
 
@@ -914,7 +1431,14 @@ void loop()
 
     </section>
 
+
 </main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -928,6 +1452,13 @@ void loop()
 
 </footer>
 
+
+
+<!-- =========================
+     JAVASCRIPT
+     BOTÓN COPIAR
+========================= -->
+
 <script>
 
 function copiarCodigo() {
@@ -938,11 +1469,13 @@ function copiarCodigo() {
     const boton =
         document.getElementById("copyButton");
 
+
     navigator.clipboard.writeText(codigo)
         .then(function() {
 
             boton.innerHTML =
                 "✅ ¡Código copiado!";
+
 
             setTimeout(function() {
 
@@ -958,6 +1491,7 @@ function copiarCodigo() {
             boton.innerHTML =
                 "❌ No se pudo copiar";
 
+
             setTimeout(function() {
 
                 boton.innerHTML =
@@ -970,6 +1504,7 @@ function copiarCodigo() {
 }
 
 </script>
+
 
 </body>
 </html>
